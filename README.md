@@ -13,12 +13,12 @@ This task has the following constraints and targets:
 - an apartment cannot be placed if its door is blocked by an existing apartment
 - even distribution travel distances to nearest core
 
-## Ineffective Strategies
+### Ineffective Strategies
 - Naively enumerating all possibilities/combinations of apartments and cores is intractable due to combinatorial explosion.
 - Dynamic programming is not possible due to the combination of hard and soft constraints some of which can only be assessed with a complete aggregation (as opposed to partially complete).
 - More traditional heuristic optimisation techniques (such as genetic algorithms) are sample inefficient as they do not prune obvious/calculable infeasible actions/combinations
 
-## Solution
+### Solution
 The way that this problem was solved was by treating the placement of a unit (apartemnt or core) as an 'action' and using a method in the class of Monte Carlo Tree Search methods to search the solution space whilst only considering valid actions at each step. Monte Carlo Tree Search scores solutions at the end state and therefore the above constraints and targets can be evaluated appropriately without approximation.
 
 The specific method chosen was Nested Monte Carlo Search, the original paper of which can be found here: https://www.ijcai.org/Proceedings/09/Papers/083.pdf
