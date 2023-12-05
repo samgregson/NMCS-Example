@@ -3,7 +3,7 @@ Nested Monte Carlo Search: An extract from a larger project, 95% of this extract
 
 ## Code Overview
 The code is separated into classes which define the logic for the Nested Monte Carlo Search search implementation logic and specific rules required for the task at hand. This abstraction helps to separate concerns and helps with maintainability.
-- The `Nmcs` class provides contains contains all the search logic for the Nested Monte Carlo Search.
+- The `Nmcs` class contains all the search logic for the Nested Monte Carlo Search.
 - `NmcsRules` is an abstract class which defines properties and methods for appropriate pruning of actions, assigning rewards to solutions, and defining a default rollout policy.
 - `NmcsState` is an abstract class which defines methods for cloning and updating states via appending an action.
 - `AggNmcsRules` and `AggNmcsState` are implementations of the respective abstract classes which define appropriate logic related to the specific problem at hand.
