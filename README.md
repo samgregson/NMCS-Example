@@ -1,6 +1,13 @@
 # NMCS-Example
 Nested Monte Carlo Search: An extract from a larger project, 95% of this extract has been authored by myself. 
 
+## Code Overview
+The code is separated into classes which define the logic for the Nested Monte Carlo Search search implementation logic and specific rules required for the task at hand. This abstraction helps to separate concerns and helps with maintainability.
+- The `Nmcs` class provides contains contains all the search logic for the Nested Monte Carlo Search.
+- `NmcsRules` is an abstract class which defines properties and methods for appropriate pruning of actions, assigning rewards to solutions, and defining a default rollout policy.
+- `NmcsState` is an abstract class which defines methods for cloning and updating states via appending an action.
+- `AggNmcsRules` and `AggNmcsState` are implementations of the respective abstract classes which define appropriate logic related to the specific problem at hand.
+  
 ## Problem Statement
 The code contained within this extract relates to the fourth stage in the image below, aggregation of fixed modular apartments and cores to a predefined building skeleton.
 ![image](https://github.com/samgregson/NMCS-Example/assets/12054742/9e98190a-2b7c-49f1-8760-4703e119df36)
@@ -24,10 +31,3 @@ The way that this problem was solved was by treating the placement of a unit (ap
 The specific method chosen was Nested Monte Carlo Search, the original paper of which can be found here: https://www.ijcai.org/Proceedings/09/Papers/083.pdf
 
 ![image](https://github.com/samgregson/NMCS-Example/assets/12054742/5474b7a5-8bca-47b8-b516-62867e16da29)
-
-## Code Overview
-The code is separated into classes which define the logic for the Nested Monte Carlo Search search logic and specific rules required for the task at hand. This abstraction helps to separate concerns of specific search implementation and the core logic specific to the problem.
-- The `Nmcs` class provides contains contains all the search logic for the Nested Monte Carlo Search.
-- `NmcsRules` is an abstract class which defines properties and methods for appropriate pruning of actions, assigning rewards to solutions, and defining a default rollout policy.
-- `NmcsState` is an abstract class which defines methods for cloning and updating states via appending an action.
-- `AggNmcsRules` and `AggNmcsState` are implementations of the respective abstract classes which define appropriate logic related to the specific problem at hand.
