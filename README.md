@@ -13,14 +13,21 @@ This task has the following constraints and targets:
 - an apartment cannot be placed if its door is blocked by an existing apartment
 - even distribution travel distances to nearest core
 
-## Ineffective Strategies
+### Ineffective Strategies
 - Naively enumerating all possibilities/combinations of apartments and cores is intractable due to combinatorial explosion.
 - Dynamic programming is not possible due to the combination of hard and soft constraints some of which can only be assessed with a complete aggregation (as opposed to partially complete).
 - More traditional heuristic optimisation techniques (such as genetic algorithms) are sample inefficient as they do not prune obvious/calculable infeasible actions/combinations
 
-## Solution
+### Solution
 The way that this problem was solved was by treating the placement of a unit (apartemnt or core) as an 'action' and using a method in the class of Monte Carlo Tree Search methods to search the solution space whilst only considering valid actions at each step. Monte Carlo Tree Search scores solutions at the end state and therefore the above constraints and targets can be evaluated appropriately without approximation.
 
 The specific method chosen was Nested Monte Carlo Search, the original paper of which can be found here: https://www.ijcai.org/Proceedings/09/Papers/083.pdf
 
 ![image](https://github.com/samgregson/NMCS-Example/assets/12054742/5474b7a5-8bca-47b8-b516-62867e16da29)
+
+## Code Overview
+The code is separated into classes which define the logic for the Nested Monte Carlo Search search logic and specific rules required for the task at hand. This abstraction helps to separate concerns of specific search implementation and the core logic specific to the problem.
+- The `Nmcs` class provides contains contains all the search logic for the Nested Monte Carlo Search.
+- `NmcsRules` is an abstract class which defines properties and methods for appropriate pruning of actions, assigning rewards to solutions, and defining a default rollout policy.
+- `NmcsState` is an abstract class which defines methods for cloning and updating states via appending an action.
+- `AggNmcsRules` and `AggNmcsState` are implementations of the respective abstract classes which define appropriate logic related to the specific problem at hand.
